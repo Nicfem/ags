@@ -1,0 +1,79 @@
+.tr-l {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.tr-l .tr-c-item {
+  background: black;
+  border-radius: 90px;
+  min-height: 30px;
+  min-width: 30px;
+  margin-right: 5px;
+}
+.tr-l .tr-c-item > * {
+  padding: 0px;
+  margin: 0px;
+}
+.tr-l .tr-c-item--last {
+  margin-right: 0px;
+}
+.tr-l .tr-c-item > popover {
+  background: black;
+}
+
+window.Bar {
+  all: unset;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin: 0px;
+}
+
+btn-right {
+  background: black;
+  border-radius: 90px;
+  padding: 0px;
+  min-width: 30px;
+  min-height: 30px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+}
+
+btn-left {
+  background: black;
+  border-radius: 90px;
+  padding: 0px;
+  min-width: 30px;
+  min-height: 30px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+}
+
+box-left {
+  min-width: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 -20px 0 0 black;
+}
+
+box-right {
+  min-width: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 -20px 0 0 black;
+}
+
+module {
+  margin-top: 0px;
+  padding-top: 0px;
+  background: transparent;
+}
+
+time-lable {
+  min-height: 40px;
+  background: black;
+  border-radius: 0px 0px 10px 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*# sourceMappingURL=result.css.map */
