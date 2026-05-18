@@ -217,13 +217,8 @@ export function DrumClock() {
     for (let i = 1; tick >= i; i++) {
       cr.save()
 
-      let sec: number
+      const sec = animSec;
 
-      if (1 < (animSec - targetSec)) {
-        sec = lerp(animSec, 0, 1 - Math.pow(0.82, time))
-      } else {
-        sec = lerp(animSec, targetSec, 1 - Math.pow(0.82, time))
-      }
       cr.setSourceRGBA(1, 1, 1, 1)
       if (i == tick) {
         cr.setSourceRGBA(255, 0, 0, 1)
@@ -288,8 +283,10 @@ export function DrumClock() {
           // Math.pow(base, t) нормализует скорость к любому fps
           // t = dt/16 → при 60fps t≈1, при 120fps t≈0.5, при 30fps t≈2
           const t = dt / 16
-          animSec = lerp(animSec, targetSec, 1 - Math.pow(0.82, t))
-          animMin = lerp(animMin, targetMin, 1 - Math.pow(0.90, t))
+          const alphaSec = 1 - Math.pow(0.82, t)
+          const alphaMin = 1 - Math.pow(0.90, t)
+          animSec = lerpAngle(animSec, targetSec, alphaSec)
+          animMin = lerpAngle(animMin, targetMin, alphaMin)
 
           time = t
 
