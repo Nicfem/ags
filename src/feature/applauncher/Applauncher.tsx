@@ -5,7 +5,7 @@ import Graphene from "gi://Graphene"
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
 
-export default function Applauncher() {
+export const Applauncher = () => {
   let contentbox: Gtk.Box
   let searchentry: Gtk.Entry
   let win: Astal.Window
@@ -61,7 +61,7 @@ export default function Applauncher() {
   return (
     <window
       $={(ref) => (win = ref)}
-      visible={true}
+      visible={false}
       name="launcher"
       anchor={TOP | BOTTOM | LEFT | RIGHT}
       exclusivity={Astal.Exclusivity.IGNORE}
@@ -107,3 +107,4 @@ export default function Applauncher() {
     </window>
   )
 }
+

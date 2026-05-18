@@ -25,6 +25,7 @@
       astal4 # or astal3 for gtk3
       apps
       tray
+      notifd
       # notifd tray wireplumber
     ];
 
