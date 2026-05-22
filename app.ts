@@ -9,9 +9,10 @@ import { Gtk } from "ags/gtk4"
 import GLib from "gi://GLib?version=2.0"
 import ClockBackground from "./src/feature/clock/ClockBackground"
 
-monitorFile("./style.scss", async () => {
-  await execAsync("sass ./style.scss ./result.css")
-  app.apply_css("./result.css")
+execAsync("sass --watch --no-source-map ./style.scss ./.cache/result.css")
+
+monitorFile("./.cache/result.css", () => {
+  app.apply_css("./.cache/result.css")
 })
 
 let applauncher: Gtk.Window
