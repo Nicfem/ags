@@ -17,7 +17,7 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    pname = "my-shell";
+    pname = "ags";
     entry = "app.ts";
 
     astalPackages = with ags.packages.${system}; [
@@ -40,14 +40,24 @@
       default = pkgs.stdenv.mkDerivation {
         name = pname;
         src = ./.;
+        fetcherVersion = 2;
+        npmFlags = [ "--legacy-peer-deps" ];
+        makeCacheWritable = true;
 
         nativeBuildInputs = with pkgs; [
           wrapGAppsHook4
           gobject-introspection
+          nodejs
+          npmHooks.npmConfigHook
           ags.packages.${system}.default
         ];
 
         buildInputs = extraPackages ++ [pkgs.gjs];
+
+        npmDeps = pkgs.fetchNpmDeps {
+          src = ./.;
+          hash = "sha256-X5UHh2Dha4YkyRQf/D4fsSgIKSa2snVPTpdoHvFxYeE=";
+        };
 
         installPhase = ''
           runHook preInstall
@@ -57,6 +67,7 @@
           cp -r * $out/share
           ags bundle ${entry} $out/bin/${pname} -d "SRC='$out/share'"
 
+          rm -rf $out/share
           runHook postInstall
         '';
       };

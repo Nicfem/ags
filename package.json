@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "ags": "*",
     "clsx": "^2.1.1",
     "gnim": "*",
     "sass": "^1.99.0"
