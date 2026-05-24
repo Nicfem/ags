@@ -1,0 +1,27 @@
+@use '../../styles/tokens' as *;
+
+.tr-l {
+  margin-top: $pill-margin;
+  margin-right: $pill-margin;
+
+  .tr-c-item {
+    background: $color-surface-pill;
+    border-radius: $radius-pill;
+    min-height: $pill-size;
+    min-width: $pill-size;
+    margin-right: $pill-margin;
+
+    >* {
+      padding: 0;
+      margin: 0;
+    }
+
+    &--last {
+      margin-right: 0;
+    }
+
+    >popover {
+      background: $color-surface-popover;
+    }
+  }
+}

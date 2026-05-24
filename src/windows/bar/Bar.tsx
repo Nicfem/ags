@@ -1,31 +1,22 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
 import { createPoll } from "ags/time"
-import { createBinding, createState, For } from "gnim"
+import { createState } from "gnim"
 import GLib from "gi://GLib"
-import { Tray } from "./feature/tray"
-
+import { Tray } from "../../widgets/tray/Tray"
+import { perfMetrics } from "../../services/performance"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-  // const time = createPoll("", 1000, "date")
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
   const [hovered, setHovered] = createState(false)
 
-  const time = createPoll("", 1000, () => {
-    return GLib.DateTime.new_now_local().format("%H:%M")!
-  })
+  const time = createPoll("", 1000, () =>
+    GLib.DateTime.new_now_local().format("%H:%M")!
+  )
 
   const motion = new Gtk.EventControllerMotion()
-
-  motion.connect("enter", () => {
-    setHovered(true)
-    console.log(hovered)
-  })
-
-  motion.connect("leave", () => {
-    setHovered(false)
-    console.log(hovered)
-  })
+  motion.connect("enter", () => setHovered(true))
+  motion.connect("leave", () => setHovered(false))
 
   return (
     <window
@@ -36,41 +27,33 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={TOP | LEFT | RIGHT}
       application={app}
-      onNotifyCursor={() => console.log('wor')}
       heightRequest={35}
     >
       <centerbox
         cssName="centerbox"
         heightRequest={35}
-        $={(self) => {
-          self.add_controller(motion)
-        }}
+        $={(self) => self.add_controller(motion)}
       >
-        <box $type="start" halign={Gtk.Align.START}>
-        </box>
+        <box $type="start" halign={Gtk.Align.START} />
 
         <box cssName="module" spacing={0} $type="center" halign={Gtk.Align.CENTER}>
           <overlay valign={Gtk.Align.START}>
-            <button cssName="btn-left" onClicked={() => console.log("Left action")}>
-            </button>
-            <box $type="overlay" cssName="box-left"></box>
+            <button cssName="btn-left" onClicked={() => console.log("left")} />
+            <box $type="overlay" cssName="box-left" />
           </overlay>
 
-          <box
-            cssName="time-lable"
-          >
+          <box cssName="time-lable">
             <label
               halign={Gtk.Align.CENTER}
               valign={Gtk.Align.CENTER}
               hexpand
-              label={time}
+              label={perfMetrics(m => `CPU ${m.cpu.percent}%`)}
             />
           </box>
 
           <overlay valign={Gtk.Align.START}>
-            <button cssName="btn-right" onClicked={() => console.log("Left action")}>
-            </button>
-            <box $type="overlay" cssName="box-right"></box>
+            <button cssName="btn-right" onClicked={() => console.log("right")} />
+            <box $type="overlay" cssName="box-right" />
           </overlay>
         </box>
 

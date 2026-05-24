@@ -1,0 +1,81 @@
+@use '../../styles/tokens' as *;
+
+window.NotificationPopups {
+  all: unset;
+}
+
+.Notification {
+  border-radius:    $radius-md;
+  background-color: $color-surface-card;
+  margin:           $space-2 $space-6 $space-2 $space-6;
+  box-shadow:       2px 3px 8px 0 $color-shadow;
+  border:           1px solid $color-border;
+
+  &.critical {
+    border: 1px solid gtkalpha($color-error, 0.4);
+
+    .header {
+      .app-name { color: gtkalpha($color-error, 0.8); }
+      .app-icon  { color: gtkalpha($color-error, 0.6); }
+    }
+  }
+
+  .header {
+    padding: $space-2;
+    color:   $color-fg-secondary;
+
+    .app-icon  { margin: 0 $space-1; }
+
+    .app-name {
+      margin-right: $space-1;
+      font-weight:  bold;
+      &:first-child { margin-left: $space-1; }
+    }
+
+    .time { margin: 0 $space-1; }
+
+    button {
+      padding:    0.2rem;
+      min-width:  0;
+      min-height: 0;
+    }
+  }
+
+  separator {
+    margin:           0 $space-1;
+    background-color: $color-border;
+  }
+
+  .content {
+    margin:     $space-6;
+    margin-top: $space-2;
+
+    .summary {
+      font-size: 1.2em;
+      color:     $color-fg;
+    }
+
+    .body { color: $color-fg-secondary; }
+
+    .image {
+      border:              1px solid $color-border-subtle;
+      margin-right:        $space-2;
+      border-radius:       $radius-sm;
+      min-width:           100px;
+      min-height:          100px;
+      background-size:     cover;
+      background-position: center;
+    }
+  }
+
+  .actions {
+    margin:     $space-6;
+    margin-top: 0;
+
+    button {
+      margin:       0 $space-1;
+      &:first-child { margin-left:  0; }
+      &:last-child  { margin-right: 0; }
+    }
+  }
+}

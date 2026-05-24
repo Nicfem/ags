@@ -1,0 +1,14 @@
+@use '../../styles/tokens' as *;
+
+window#launcher {
+  background: transparent;
+  color:      $color-fg;
+
+  box#launcher-content {
+    background:    $color-surface-card;
+    min-width:     400px;
+    border-radius: $radius-md;
+    padding:       $space-2;
+    border:        1px solid $color-border;
+  }
+}

@@ -19,16 +19,10 @@ function time(time: number, format = "%H:%M") {
 }
 
 function urgency(n: AstalNotifd.Notification) {
-  const { LOW, NORMAL, CRITICAL } = AstalNotifd.Urgency
-  switch (n.urgency) {
-    case LOW:
-      return "low"
-    case CRITICAL:
-      return "critical"
-    case NORMAL:
-    default:
-      return "normal"
-  }
+  const { LOW, CRITICAL } = AstalNotifd.Urgency
+  if (n.urgency === CRITICAL) return "critical"
+  if (n.urgency === LOW)      return "low"
+  return "normal"
 }
 
 interface NotificationProps {

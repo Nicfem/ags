@@ -1,5 +1,7 @@
 declare const SRC: string
 
+declare const DEVELOPMENT: boolean
+
 declare module "inline:*" {
   const content: string
   export default content

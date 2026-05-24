@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "ags run --define DEVELOPMENT=true"
+  },
   "dependencies": {
     "clsx": "^2.1.1",
     "gnim": "*",

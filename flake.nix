@@ -70,6 +70,10 @@
           rm -rf $out/share
           runHook postInstall
         '';
+
+        preFixup = ''
+          gappsWrapperArgs+=(--set GSK_RENDERER cairo)
+        '';
       };
     };
 
@@ -80,6 +84,10 @@
             inherit extraPackages;
           })
         ];
+
+        shellHook = ''
+          export GSK_RENDERER=cairo
+        '';
       };
     };
   };

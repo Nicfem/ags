@@ -1,69 +1,7 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-@use './src/feature/tray';
-@use './src/feature/notification';
-@use './src/feature/applauncher';
+// Entry point — imports all component styles.
+// Tokens live in src/styles/_tokens.scss and are loaded per-component via @use.
 
-$pill-color: black;
-$fg-color: black;
-$bg-color: black;
-
-// * {
-//   all: unset;
-// }
-
-window.Bar {
-  all: unset;
-  font-weight: bold;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  margin: 0px;
-}
-
-btn-right {
-  background: $pill-color;
-  border-radius: 90px;
-  padding: 0px;
-  min-width: 30px;
-  min-height: 30px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-bottom: 0px;
-}
-
-btn-left {
-  background: $pill-color;
-  border-radius: 90px;
-  padding: 0px;
-  min-width: 30px;
-  min-height: 30px;
-  margin-top: 5px;
-  margin-right: 5px;
-  margin-bottom: 0px;
-}
-
-
-box-left {
-  min-width: 15px;
-  border-top-right-radius: 15px;
-  box-shadow: 0 -20px 0 0 $pill-color;
-}
-
-box-right {
-  min-width: 15px;
-  border-top-left-radius: 15px;
-  box-shadow: 0 -20px 0 0 $pill-color;
-}
-
-module {
-  margin-top: 0px;
-  padding-top: 0px;
-  background: transparent;
-}
-
-time-lable {
-  min-height: 40px;
-  background: $pill-color;
-  border-radius: 0px 0px 10px 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
+@use './src/windows/bar/bar';
+@use './src/windows/notifications/notifications';
+@use './src/windows/launcher/launcher';
+@use './src/widgets/tray/tray';

@@ -14,8 +14,7 @@ export const Applauncher = () => {
   const [list, setList] = createState(new Array<AstalApps.Application>())
 
   function search(text: string) {
-    if (text === "") setList([])
-    else setList(apps.fuzzy_query(text).slice(0, 8))
+    setList(text === "" ? [] : apps.fuzzy_query(text).slice(0, 8))
   }
 
   function launch(app?: AstalApps.Application) {
@@ -25,34 +24,21 @@ export const Applauncher = () => {
     }
   }
 
-  // close on ESC
-  // handle alt + number key
-  function onKey(
-    _e: Gtk.EventControllerKey,
-    keyval: number,
-    _: number,
-    mod: number,
-  ) {
+  function onKey(_e: Gtk.EventControllerKey, keyval: number, _: number, mod: number) {
     if (keyval === Gdk.KEY_Escape) {
       win.visible = false
       return
     }
-
     if (mod === Gdk.ModifierType.ALT_MASK) {
       for (const i of [1, 2, 3, 4, 5, 6, 7, 8, 9] as const) {
-        if (keyval === Gdk[`KEY_${i}`]) {
-          return launch(list.get()[i - 1])
-        }
+        if (keyval === Gdk[`KEY_${i}`]) return launch(list.get()[i - 1])
       }
     }
   }
 
-  // close on clickaway
   function onClick(_e: Gtk.GestureClick, _: number, x: number, y: number) {
     const [, rect] = contentbox.compute_bounds(win)
-    const position = new Graphene.Point({ x, y })
-
-    if (!rect.contains_point(position)) {
+    if (!rect.contains_point(new Graphene.Point({ x, y }))) {
       win.visible = false
       return true
     }
@@ -107,4 +93,3 @@ export const Applauncher = () => {
     </window>
   )
 }
-
