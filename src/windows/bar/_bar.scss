@@ -6,43 +6,53 @@ window.Bar {
   margin: 0;
 }
 
+.metrics-widget {
+  color: white;
+  background: black;
+}
+
 btn-left,
 btn-right {
-  background:    $color-surface-pill;
+  background: $color-surface-pill;
   border-radius: $radius-pill;
-  padding:       0;
-  min-width:     $pill-size;
-  min-height:    $pill-size;
-  margin-top:    $pill-margin;
+  padding: 0;
+  min-width: $pill-size;
+  min-height: $pill-size;
+  margin-top: $pill-margin;
   margin-bottom: 0;
 }
 
-btn-left  { margin-right: $pill-margin; }
-btn-right { margin-left:  $pill-margin; }
+btn-left {
+  margin-right: $pill-margin;
+}
+
+btn-right {
+  margin-left: $pill-margin;
+}
 
 box-left {
-  min-width:              $corner-tab-size;
+  min-width: $corner-tab-size;
   border-top-right-radius: $corner-tab-size;
   box-shadow: 0 -20px 0 0 $color-surface-pill;
 }
 
 box-right {
-  min-width:             $corner-tab-size;
+  min-width: $corner-tab-size;
   border-top-left-radius: $corner-tab-size;
   box-shadow: 0 -20px 0 0 $color-surface-pill;
 }
 
 module {
-  margin-top:  0;
+  margin-top: 0;
   padding-top: 0;
-  background:  transparent;
+  background: transparent;
 }
 
 time-lable {
-  min-height:    $bar-height;
-  background:    $color-surface-pill;
+  min-height: $bar-height;
+  background: $color-surface-pill;
   border-radius: 0 0 $radius-sm $radius-sm;
-  padding:       0 $time-padding-x;
+  padding: 0 $time-padding-x;
 
   label {
     color: $color-fg;

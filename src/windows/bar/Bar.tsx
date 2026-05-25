@@ -42,12 +42,44 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
             <box $type="overlay" cssName="box-left" />
           </overlay>
 
-          <box cssName="time-lable">
-            <label
+          <box
+            cssName="time-lable"
+            halign={Gtk.Align.CENTER}
+            valign={Gtk.Align.CENTER}
+            homogeneous
+          >
+            <image
+              class="metrics-widget"
+              icon_name="gpu"
+              pixel_size={28}
               halign={Gtk.Align.CENTER}
               valign={Gtk.Align.CENTER}
+            />
+            <label
               hexpand
-              label={perfMetrics(m => `CPU ${m.cpu.percent}%`)}
+              label={perfMetrics(m => `${m.gpu.percent}%`)}
+            />
+            <image
+              class="metrics-widget"
+              icon_name="ram"
+              pixel_size={28}
+              halign={Gtk.Align.CENTER}
+              valign={Gtk.Align.CENTER}
+            />
+            <label
+              hexpand
+              label={perfMetrics(m => `${m.mem.percent}%`)}
+            />
+            <image
+              class="metrics-widget"
+              icon_name="cpu"
+              pixel_size={28}
+              halign={Gtk.Align.CENTER}
+              valign={Gtk.Align.CENTER}
+            />
+            <label
+              hexpand
+              label={perfMetrics(m => `${m.cpu.percent}%`)}
             />
           </box>
 

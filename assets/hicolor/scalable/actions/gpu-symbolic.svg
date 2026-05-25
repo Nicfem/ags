@@ -1,0 +1,13 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Left vertical bar -->
+  <line x1="2" y1="2.5" x2="2" y2="21.5"/>
+  <!-- GPU body -->
+  <path d="M2 4.5H20C21.1046 4.5 22 5.3954 22 6.5V15.5C22 16.6046 21.1046 17.5 20 17.5H2"/>
+  <!-- Connector bracket -->
+  <path d="M6.5 17.5V20C6.5 20.8285 7.1716 21.5 8 21.5H13C13.8285 21.5 14.5 20.8285 14.5 20V17.5"/>
+  <!-- Circle at (8,11) -->
+  <circle cx="8" cy="11" r="2"/>
+  <!-- Circle at (16,11) -->
+  <circle cx="16" cy="11" r="2"/>
+</svg>

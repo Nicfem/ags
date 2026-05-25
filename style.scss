@@ -1,7 +1,8 @@
-// Entry point — imports all component styles.
-// Tokens live in src/styles/_tokens.scss and are loaded per-component via @use.
-
 @use './src/windows/bar/bar';
 @use './src/windows/notifications/notifications';
 @use './src/windows/launcher/launcher';
 @use './src/widgets/tray/tray';
+
+// * {
+//   all: unset;
+// }

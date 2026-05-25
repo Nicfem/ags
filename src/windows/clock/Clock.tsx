@@ -10,7 +10,7 @@ import {
 } from "../../styles/tokens"
 import GLib from "gi://GLib?version=2.0"
 
-const FPS = 60
+const FPS = 120
 const FRAME_TIME = 1000 / FPS
 
 const TICK_COUNT = 60
